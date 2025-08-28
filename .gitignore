@@ -1,0 +1,52 @@
+# ==========================
+# Python
+# ==========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.eggs/
+.env
+
+# ==========================
+# Logs
+# ==========================
+logs/
+*.log
+
+# ==========================
+# Virtual env
+# ==========================
+venv/
+.envrc
+.python-version
+
+# ==========================
+# Node / React
+# ==========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnp
+.pnp.js
+coverage/
+build/
+dist/
+
+# ==========================
+# Docker
+# ==========================
+docker-compose.override.yml
+.docker/
+.dockerignore
+
+# ==========================
+# Editor / System
+# ==========================
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~

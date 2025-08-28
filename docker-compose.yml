@@ -1,0 +1,64 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: cve
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./migrations/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d cve"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  cve-worker:
+    build: ./services/cve-worker
+    stop_grace_period: 3s
+    env_file: .env
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped
+
+  cve-api:
+    build: ./services/cve-api
+    env_file: .env
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "${API_PORT:-8080}:8080"
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped
+
+  web-ui:
+    build: ./services/web-ui
+    env_file: .env
+    depends_on:
+      - cve-api
+    ports:
+      - "${UI_PORT:-3000}:80"
+    restart: unless-stopped
+
+  cve-bot:
+    build: ./services/cve-bot
+    env_file: .env
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped
+
+volumes:
+  db_data:

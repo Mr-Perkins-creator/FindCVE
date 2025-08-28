@@ -1,0 +1,105 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background: black;
+  color: white;
+  overflow: hidden;
+}
+
+.matrix-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("/matrix.gif") repeat center center;
+  opacity: 0.2;
+  z-index: -1;
+}
+
+.auth-container, .dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.auth-box {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+}
+
+.logo {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.green {
+  color: #00ff00;
+}
+
+.white {
+  color: #ffffff;
+}
+
+input {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+}
+
+button {
+  margin: 5px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  background: #00ff00;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #00cc00;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  max-width: 1000px;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 80%;
+  max-width: 1000px;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: rgba(0,0,0,0.7);
+}
+
+th, td {
+  border: 1px solid #00ff00;
+  padding: 10px;
+  text-align: left;
+}
