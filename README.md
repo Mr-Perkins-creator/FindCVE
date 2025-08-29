@@ -38,14 +38,14 @@ FindCVE/
 
 ## Запуск
 
-bash
+bash:
 git clone https://github.com/Mr-Perkins-creator/FindCVE.git
 cd FindCVE
 
-# создаём свой .env на основе примера
+# Cоздаём свой .env на основе примера
 cp .env.example .env
 
-# поднимаем сервисы
+# Поднимаем сервисы
 docker compose up --build
 
 После сборки и запуска:
